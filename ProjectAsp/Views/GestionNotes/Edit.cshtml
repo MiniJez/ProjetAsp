@@ -1,0 +1,48 @@
+﻿@model ProjectAsp.Models.Note
+
+@{
+    ViewData["Title"] = "RestAdvisor";
+}
+
+<h1>Modifier</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="restoID" class="control-label">Restaurant</label>
+                <select asp-for="restoID" class="form-control" asp-items="ViewBag.restoID"></select>
+                <span asp-validation-for="restoID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="note" class="control-label">Note</label>
+                <input asp-for="note" class="form-control" />
+                <span asp-validation-for="note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dateDerniereVisite" class="control-label">Date de la dernière visite</label>
+                <input asp-for="dateDerniereVisite" class="form-control" />
+                <span asp-validation-for="dateDerniereVisite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="commentaire" class="control-label">Commentaire</label>
+                <input asp-for="commentaire" class="form-control" />
+                <span asp-validation-for="commentaire" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Modifier" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour gestion</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProjectAsp.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "RestAdvisor";
+}
+
+<h1>Gestion des restaurants</h1>
+
+<p>
+    <a asp-action="Create">Ajouter un restaurant</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom
+            </th>
+            <th>
+                Adresse
+            </th>
+            <th>
+                Date de dernière visite
+            </th>
+            <th>
+                Note
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nom)
+            </td>
+            <td>
+                @item.adresse.rue, @item.adresse.cp @item.adresse.ville
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note.dateDerniereVisite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note.note)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Modifier</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Détails</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

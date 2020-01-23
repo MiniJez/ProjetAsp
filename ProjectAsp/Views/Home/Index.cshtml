@@ -1,0 +1,38 @@
+﻿@model List<Restaurant>
+
+@{
+    ViewData["Title"] = "RestAdvisor";
+}
+
+    <div class="container">
+
+        <h1 class="display-4" style="margin-bottom: 20px">Bienvenue sur RestAdvisor !</h1>
+        <h3 style="margin-bottom: 30px">Liste des 5 meilleurs restaurants de Grenoble</h3>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Téléphone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var resto in Model.Select((value, i) => new { i, value }))
+                    {
+                        <tr>
+                            <th scope="row">@resto.i</th>
+                            <td>@resto.value.nom</td>
+                            <td>@resto.value.tel</td>
+                            <td>@resto.value.email</td>
+                            <td>@resto.value.note.note</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
